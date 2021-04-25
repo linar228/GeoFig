@@ -1,0 +1,13 @@
+C:\Users\Пользователь\Desktop\GeoFig-master4\GeoFig\bin\Debug\netcoreapp3.1\GeoFig.exe
+C:\Users\Пользователь\Desktop\GeoFig-master4\GeoFig\bin\Debug\netcoreapp3.1\GeoFig.deps.json
+C:\Users\Пользователь\Desktop\GeoFig-master4\GeoFig\bin\Debug\netcoreapp3.1\GeoFig.runtimeconfig.json
+C:\Users\Пользователь\Desktop\GeoFig-master4\GeoFig\bin\Debug\netcoreapp3.1\GeoFig.runtimeconfig.dev.json
+C:\Users\Пользователь\Desktop\GeoFig-master4\GeoFig\bin\Debug\netcoreapp3.1\GeoFig.dll
+C:\Users\Пользователь\Desktop\GeoFig-master4\GeoFig\bin\Debug\netcoreapp3.1\GeoFig.pdb
+C:\Users\Пользователь\Desktop\GeoFig-master4\GeoFig\obj\Debug\netcoreapp3.1\GeoFig.csprojAssemblyReference.cache
+C:\Users\Пользователь\Desktop\GeoFig-master4\GeoFig\obj\Debug\netcoreapp3.1\GeoFig.AssemblyInfoInputs.cache
+C:\Users\Пользователь\Desktop\GeoFig-master4\GeoFig\obj\Debug\netcoreapp3.1\GeoFig.AssemblyInfo.cs
+C:\Users\Пользователь\Desktop\GeoFig-master4\GeoFig\obj\Debug\netcoreapp3.1\GeoFig.csproj.CoreCompileInputs.cache
+C:\Users\Пользователь\Desktop\GeoFig-master4\GeoFig\obj\Debug\netcoreapp3.1\GeoFig.dll
+C:\Users\Пользователь\Desktop\GeoFig-master4\GeoFig\obj\Debug\netcoreapp3.1\GeoFig.pdb
+C:\Users\Пользователь\Desktop\GeoFig-master4\GeoFig\obj\Debug\netcoreapp3.1\GeoFig.genruntimeconfig.cache

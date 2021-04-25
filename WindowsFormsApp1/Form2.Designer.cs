@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.X = new System.Windows.Forms.TextBox();
+            this.Y = new System.Windows.Forms.TextBox();
+            this.Radius = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -40,35 +40,39 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // X
             // 
-            this.textBox1.Location = new System.Drawing.Point(17, 67);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.X.Location = new System.Drawing.Point(23, 82);
+            this.X.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.X.Name = "X";
+            this.X.Size = new System.Drawing.Size(132, 22);
+            this.X.TabIndex = 0;
+            this.X.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // textBox2
+            // Y
             // 
-            this.textBox2.Location = new System.Drawing.Point(142, 67);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.Y.Location = new System.Drawing.Point(189, 82);
+            this.Y.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Y.Name = "Y";
+            this.Y.Size = new System.Drawing.Size(132, 22);
+            this.Y.TabIndex = 1;
+            this.Y.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // textBox3
+            // Radius
             // 
-            this.textBox3.Location = new System.Drawing.Point(266, 67);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
+            this.Radius.Location = new System.Drawing.Point(355, 82);
+            this.Radius.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Radius.Name = "Radius";
+            this.Radius.Size = new System.Drawing.Size(132, 22);
+            this.Radius.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(57, 48);
+            this.label1.Location = new System.Drawing.Point(76, 59);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(14, 13);
+            this.label1.Size = new System.Drawing.Size(16, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "X";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -76,9 +80,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(182, 48);
+            this.label2.Location = new System.Drawing.Point(243, 59);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(14, 13);
+            this.label2.Size = new System.Drawing.Size(17, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Y";
             this.label2.Click += new System.EventHandler(this.label2_Click);
@@ -86,9 +91,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(299, 48);
+            this.label3.Location = new System.Drawing.Point(399, 59);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.Size = new System.Drawing.Size(51, 16);
             this.label3.TabIndex = 5;
             this.label3.Text = "Radius";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -96,9 +102,10 @@
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(155, 104);
+            this.button1.Location = new System.Drawing.Point(207, 128);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(100, 28);
             this.button1.TabIndex = 6;
             this.button1.Text = "Ok";
             this.button1.UseVisualStyleBackColor = true;
@@ -107,9 +114,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(173, 24);
+            this.label4.Location = new System.Drawing.Point(231, 30);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 13);
+            this.label4.Size = new System.Drawing.Size(42, 16);
             this.label4.TabIndex = 7;
             this.label4.Text = "Circle";
             // 
@@ -121,22 +129,24 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.Radius);
+            this.panel1.Controls.Add(this.Y);
+            this.panel1.Controls.Add(this.X);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(396, 158);
+            this.panel1.Size = new System.Drawing.Size(528, 194);
             this.panel1.TabIndex = 8;
             // 
             // Form2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 158);
+            this.ClientSize = new System.Drawing.Size(528, 194);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form2";
             this.Text = "v";
             this.Load += new System.EventHandler(this.Form2_Load);
@@ -153,8 +163,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.TextBox textBox2;
-        public System.Windows.Forms.TextBox textBox3;
+        public System.Windows.Forms.TextBox X;
+        public System.Windows.Forms.TextBox Y;
+        public System.Windows.Forms.TextBox Radius;
     }
 }
