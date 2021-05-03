@@ -7,11 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        int x, y, h, w;
+        Image file;
         public Form1()
         {
             InitializeComponent();
@@ -95,6 +99,33 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Рисунок .bmp | *.bmp";
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                int width, height;
+                width = Board.Width;
+                height = Board.Height;
+                Bitmap bmp = new Bitmap(width, height);
+                Board.DrawToBitmap(bmp, Board.ClientRectangle);
+                bmp.Save(sfd.FileName);
+            }
+
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog f = new OpenFileDialog();
+            f.Filter = "JPG(*.JPG)|*.jpg";
+            if(f.ShowDialog()==DialogResult.OK)
+            {
+                file = Image.FromFile(f.FileName);
+              //  pictureBox1.Image = file;
+            }
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
             Form5 FRect = new Form5();
@@ -106,6 +137,29 @@ namespace WindowsFormsApp1
                     paper.DrawRectangle(new Pen(Color.Green, 2), Convert.ToInt32(FRect.X.Text), Convert.ToInt32(FRect.Y.Text),
                                                                  Convert.ToInt32(FRect.Width.Text), Convert.ToInt32(FRect.Length.Text));
                 }
+            }
+        }
+
+        private void radioButton1_MouseDown(object sender, MouseEventArgs e)
+        {
+            x = e.X;
+            y = e.Y;
+        }
+
+        private void radioButton1_MouseUp(object sender, MouseEventArgs e)
+        {
+            var p = new Pen(Color.Blue, 2);
+            h = e.X - x;
+            w = e.Y - y;
+            Graphics g = Board.CreateGraphics();
+            Rectangle shape = new Rectangle(x, y, h, w);
+            if(radioButton1.Checked)
+            {
+                g.DrawEllipse(p, shape);
+            }
+            else if(radioButton2.Checked)
+            {
+                g.DrawRectangle(p, shape);
             }
         }
     }

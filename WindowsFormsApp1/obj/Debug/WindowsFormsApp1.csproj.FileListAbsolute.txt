@@ -25,3 +25,4 @@ C:\Users\Пользователь\Desktop\GeoFig-master4\WindowsFormsApp1\obj\De
 C:\Users\Пользователь\Desktop\GeoFig-master4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
 C:\Users\Пользователь\Desktop\GeoFig-master4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\Пользователь\Desktop\GeoFig-master4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\Пользователь\Desktop\GeoFig-master4\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
