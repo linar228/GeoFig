@@ -126,6 +126,39 @@ namespace WindowsFormsApp1
             }
         }
 
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            x = e.X;
+            y = e.Y;
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            h = e.X - x;
+            w = e.Y - y;
+            Graphics g = Board.CreateGraphics();
+            Rectangle shape = new Rectangle(x, y, h, w);
+            if(radioButton1.Checked)
+            {
+                g.DrawEllipse(new Pen(Color.Green, 2), shape);
+            }
+            else if(radioButton2.Checked)
+            {
+                g.DrawRectangle(new Pen(Color.Green, 2), shape);
+            }
+        }
+
+        private void Clear_Click(object sender, EventArgs e)
+        {
+            Graphics g = Board.CreateGraphics();
+            g.Clear(Color.White);
+        }
+
         private void button4_Click(object sender, EventArgs e)
         {
             Form5 FRect = new Form5();
