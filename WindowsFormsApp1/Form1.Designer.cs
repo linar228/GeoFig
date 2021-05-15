@@ -44,6 +44,10 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.Clear = new System.Windows.Forms.Button();
+            this.Point1 = new System.Windows.Forms.Button();
+            this.Point2 = new System.Windows.Forms.Button();
+            this.Point3 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,6 +120,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.Point3);
+            this.panel1.Controls.Add(this.Point2);
+            this.panel1.Controls.Add(this.Point1);
             this.panel1.Controls.Add(this.Clear);
             this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.button6);
@@ -136,7 +144,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(640, 31);
+            this.button7.Location = new System.Drawing.Point(559, 57);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(75, 23);
             this.button7.TabIndex = 17;
@@ -186,6 +194,7 @@
             this.Board.Name = "Board";
             this.Board.Size = new System.Drawing.Size(782, 315);
             this.Board.TabIndex = 15;
+            this.Board.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Board_MouseDown);
             // 
             // openFileDialog1
             // 
@@ -193,13 +202,52 @@
             // 
             // Clear
             // 
-            this.Clear.Location = new System.Drawing.Point(20, 60);
+            this.Clear.Location = new System.Drawing.Point(80, 60);
             this.Clear.Name = "Clear";
             this.Clear.Size = new System.Drawing.Size(75, 23);
             this.Clear.TabIndex = 18;
             this.Clear.Text = "Clear";
             this.Clear.UseVisualStyleBackColor = true;
             this.Clear.Click += new System.EventHandler(this.Clear_Click);
+            // 
+            // Point1
+            // 
+            this.Point1.Location = new System.Drawing.Point(675, 30);
+            this.Point1.Name = "Point1";
+            this.Point1.Size = new System.Drawing.Size(75, 23);
+            this.Point1.TabIndex = 19;
+            this.Point1.Text = "Point 1";
+            this.Point1.UseVisualStyleBackColor = true;
+            this.Point1.Click += new System.EventHandler(this.Point1_Click);
+            // 
+            // Point2
+            // 
+            this.Point2.Location = new System.Drawing.Point(675, 57);
+            this.Point2.Name = "Point2";
+            this.Point2.Size = new System.Drawing.Size(75, 23);
+            this.Point2.TabIndex = 20;
+            this.Point2.Text = "Point 2";
+            this.Point2.UseVisualStyleBackColor = true;
+            this.Point2.Click += new System.EventHandler(this.Point2_Click);
+            // 
+            // Point3
+            // 
+            this.Point3.Location = new System.Drawing.Point(675, 86);
+            this.Point3.Name = "Point3";
+            this.Point3.Size = new System.Drawing.Size(75, 23);
+            this.Point3.TabIndex = 21;
+            this.Point3.Text = "Point 3";
+            this.Point3.UseVisualStyleBackColor = true;
+            this.Point3.Click += new System.EventHandler(this.Point3_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(646, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(143, 13);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Draw mouse line and triangle";
             // 
             // Form1
             // 
@@ -237,6 +285,10 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button Clear;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button Point3;
+        private System.Windows.Forms.Button Point2;
+        private System.Windows.Forms.Button Point1;
     }
 }
 

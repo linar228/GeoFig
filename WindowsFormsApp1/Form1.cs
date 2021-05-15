@@ -14,12 +14,18 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        int x, y, h, w;
-        Image file;
         public Form1()
         {
             InitializeComponent();
         }
+        int x, y, h, w;
+        Image file;
+        Point v1;
+        Point v2;
+        Point v3;
+        bool getv1 = false;
+        bool getv2 = false;
+        bool getv3 = false;
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -157,6 +163,50 @@ namespace WindowsFormsApp1
         {
             Graphics g = Board.CreateGraphics();
             g.Clear(Color.White);
+        }
+
+        private void Board_MouseDown(object sender, MouseEventArgs e)
+        {
+            Graphics gp = Board.CreateGraphics();
+            Pen blackPen = new Pen(Color.Black, 3);
+            if (getv1)
+            {
+                v1 = new Point(e.X, e.Y);
+            }
+            if (getv2)
+            {
+                v2 = new Point(e.X, e.Y);
+                gp.DrawLine(blackPen, v1, v2);
+            }
+            if (getv3)
+            {
+                v3 = new Point(e.X, e.Y);
+                gp.DrawLine(blackPen, v3, v2);
+                gp.DrawLine(blackPen, v3, v1);
+            }
+
+            Board.Cursor = Cursors.Default;
+            getv1 = false;
+            getv2 = false;
+            getv3 = false;
+        }
+
+        private void Point1_Click(object sender, EventArgs e)
+        {
+            getv1 = true;
+            Board.Cursor = Cursors.Cross;
+        }
+
+        private void Point2_Click(object sender, EventArgs e)
+        {
+            getv2 = true;
+            Board.Cursor = Cursors.Cross;
+        }
+
+        private void Point3_Click(object sender, EventArgs e)
+        {
+            getv3 = true;
+            Board.Cursor = Cursors.Cross;
         }
 
         private void button4_Click(object sender, EventArgs e)
