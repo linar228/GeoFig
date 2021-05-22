@@ -164,17 +164,18 @@
             this.radioButton1.UseVisualStyleBackColor = true;
             this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             this.radioButton1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.radioButton1_MouseDown);
-            this.radioButton1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.radioButton1_MouseUp);
             // 
             // Board
             // 
             this.Board.BackColor = System.Drawing.SystemColors.Window;
-            this.Board.Location = new System.Drawing.Point(7, 126);
+            this.Board.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Board.Location = new System.Drawing.Point(0, 114);
             this.Board.Name = "Board";
-            this.Board.Size = new System.Drawing.Size(782, 315);
+            this.Board.Size = new System.Drawing.Size(800, 336);
             this.Board.TabIndex = 15;
             this.Board.Paint += new System.Windows.Forms.PaintEventHandler(this.Board_Paint);
             this.Board.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Board_MouseDown);
+            this.Board.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Board_MouseUp);
             // 
             // openFileDialog1
             // 
@@ -191,8 +192,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
             this.Text = "Form1";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
-            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
+            //this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

@@ -15,13 +15,13 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         private Bitmap draw;
-        protected Graphics graphics;
+        protected Graphics g;
         public Form1()
         {
             InitializeComponent();
-            draw = new Bitmap(System.Windows.Forms.Screen.PrimaryScreen.Bounds.Width,
-                System.Windows.Forms.Screen.PrimaryScreen.Bounds.Height);
-            graphics = Graphics.FromImage(draw);
+            draw = new Bitmap(1920, 1080);
+            g = Graphics.FromImage(draw);
+            g.Clear(Color.White);
         }
         int x, y, h, w;
         Image file;
@@ -48,45 +48,30 @@ namespace WindowsFormsApp1
                 bmp.Save(sfd.FileName);
             }
             */
-            draw.Save("c:\\test.png", System.Drawing.Imaging.ImageFormat.Png);
+            draw.Save("D:\\test.png", System.Drawing.Imaging.ImageFormat.Png);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
-            OpenFileDialog f = new OpenFileDialog();
-            f.Filter = "JPG(*.JPG)|*.jpg";
-            if(f.ShowDialog()==DialogResult.OK)
-            {
-                file = Image.FromFile(f.FileName);
-              //  pictureBox1.Image = file;
-            }
+            //OpenFileDialog f = new OpenFileDialog();
+            //f.Filter = "JPG(*.JPG)|*.jpg";
+            //if(f.ShowDialog()==DialogResult.OK)
+            //{
+            //file = Image.FromFile(f.FileName);
+            //  pictureBox1.Image = file;
+            //}
+
+            var img = new Bitmap("D:\\test.png");
+            draw.Dispose();
+            draw = new Bitmap(img);
+            g = Graphics.FromImage(draw);
+            Board.Refresh();
+            img.Dispose();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void Form1_MouseDown(object sender, MouseEventArgs e)
-        {
-            x = e.X;
-            y = e.Y;
-        }
-
-        private void Form1_MouseUp(object sender, MouseEventArgs e)
-        {
-            h = e.X - x;
-            w = e.Y - y;
-            Graphics g = Board.CreateGraphics();
-            Rectangle shape = new Rectangle(x, y, h, w);
-            if(radioButton1.Checked)
-            {
-                g.DrawEllipse(new Pen(Color.Green, 2), shape);
-            }
-            else if(radioButton2.Checked)
-            {
-                g.DrawRectangle(new Pen(Color.Green, 2), shape);
-            }
         }
 
         private void Clear_Click(object sender, EventArgs e)
@@ -98,28 +83,52 @@ namespace WindowsFormsApp1
 
         private void Board_MouseDown(object sender, MouseEventArgs e)
         {
-            Graphics gp = Board.CreateGraphics();
+            x = e.X;
+            y = e.Y;
             Pen blackPen = new Pen(Color.Black, 3);
             if (getv1)
             {
                 v1 = new Point(e.X, e.Y);
+                Board.Refresh();
             }
             if (getv2)
             {
                 v2 = new Point(e.X, e.Y);
-                gp.DrawLine(blackPen, v1, v2);
+                g.DrawLine(blackPen, v1, v2);
+                Board.Refresh();
             }
             if (getv3)
             {
                 v3 = new Point(e.X, e.Y);
-                gp.DrawLine(blackPen, v3, v2);
-                gp.DrawLine(blackPen, v3, v1);
+                g.DrawLine(blackPen, v3, v2);
+                g.DrawLine(blackPen, v3, v1);
+                Board.Refresh();
             }
 
             Board.Cursor = Cursors.Default;
             getv1 = false;
             getv2 = false;
             getv3 = false;
+        }
+
+        private void Board_MouseUp(object sender, MouseEventArgs e)
+        {
+            var p = new Pen(Color.Blue, 2);
+            h = e.X - x;
+            w = e.Y - y;
+            Rectangle shape = new Rectangle(x, y, h, w);
+            if (radioButton1.Checked)
+            {
+                Figure circle = new Circle(x, y, g, p, shape);
+                circle.Draw(g, p, shape);
+                Board.Refresh();
+            }
+            else if (radioButton2.Checked)
+            {
+                Figure rectangle = new RectangleC(x, y, g, p, shape);
+                rectangle.Draw(g, p, shape);
+                Board.Refresh();
+            }
         }
 
         private void Point1_Click(object sender, EventArgs e)
@@ -149,23 +158,6 @@ namespace WindowsFormsApp1
         {
             x = e.X;
             y = e.Y;
-        }
-
-        private void radioButton1_MouseUp(object sender, MouseEventArgs e)
-        {
-            var p = new Pen(Color.Blue, 2);
-            h = e.X - x;
-            w = e.Y - y;
-            Graphics g = Board.CreateGraphics();
-            Rectangle shape = new Rectangle(x, y, h, w);
-            if(radioButton1.Checked)
-            {
-                g.DrawEllipse(p, shape);
-            }
-            else if(radioButton2.Checked)
-            {
-                g.DrawRectangle(p, shape);
-            }
         }
     }
 }
