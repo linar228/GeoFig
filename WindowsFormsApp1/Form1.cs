@@ -15,63 +15,37 @@ namespace WindowsFormsApp1
     public partial class Form1 : Form
     {
         private Bitmap draw;
-        protected Graphics g;
-        public Form1()
-        {
-            InitializeComponent();
-            draw = new Bitmap(1920, 1080);
-            g = Graphics.FromImage(draw);
-            g.Clear(Color.White);
-        }
+        protected Graphics graphics;
+        protected int thickness;
+        protected Color FigColor = Color.Black;
         int x, y, h, w;
-        Image file;
         Point v1;
         Point v2;
         Point v3;
         bool getv1 = false;
         bool getv2 = false;
         bool getv3 = false;
-
-      
-        private void button6_Click(object sender, EventArgs e)
+        public Form1()
         {
-            /*
-            SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Рисунок .bmp | *.bmp";
-            if (sfd.ShowDialog() == DialogResult.OK)
-            {
-                int width, height;
-                width = Board.Width;
-                height = Board.Height;
-                Bitmap bmp = new Bitmap(width, height);
-                Board.DrawToBitmap(bmp, Board.ClientRectangle);
-                bmp.Save(sfd.FileName);
-            }
-            */
-            draw.Save("D:\\test.png", System.Drawing.Imaging.ImageFormat.Png);
+            InitializeComponent();
+            draw = new Bitmap(1920, 1080);
+            graphics = Graphics.FromImage(draw);
+            graphics.Clear(Color.White);
+        }
+      
+        private void SaveBut_Click(object sender, EventArgs e)
+        {
+            draw.Save("D:\\Image.png", System.Drawing.Imaging.ImageFormat.Png);
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void OpenBut_Click(object sender, EventArgs e)
         {
-            //OpenFileDialog f = new OpenFileDialog();
-            //f.Filter = "JPG(*.JPG)|*.jpg";
-            //if(f.ShowDialog()==DialogResult.OK)
-            //{
-            //file = Image.FromFile(f.FileName);
-            //  pictureBox1.Image = file;
-            //}
-
-            var img = new Bitmap("D:\\test.png");
+            var img = new Bitmap("D:\\Image.png");
             draw.Dispose();
             draw = new Bitmap(img);
-            g = Graphics.FromImage(draw);
+            graphics = Graphics.FromImage(draw);
             Board.Refresh();
             img.Dispose();
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Clear_Click(object sender, EventArgs e)
@@ -85,7 +59,7 @@ namespace WindowsFormsApp1
         {
             x = e.X;
             y = e.Y;
-            Pen blackPen = new Pen(Color.Black, 3);
+            Pen blackPen = new Pen(FigColor, thickness);
             if (getv1)
             {
                 v1 = new Point(e.X, e.Y);
@@ -94,14 +68,14 @@ namespace WindowsFormsApp1
             if (getv2)
             {
                 v2 = new Point(e.X, e.Y);
-                g.DrawLine(blackPen, v1, v2);
+                graphics.DrawLine(blackPen, v1, v2);
                 Board.Refresh();
             }
             if (getv3)
             {
                 v3 = new Point(e.X, e.Y);
-                g.DrawLine(blackPen, v3, v2);
-                g.DrawLine(blackPen, v3, v1);
+                graphics.DrawLine(blackPen, v3, v2);
+                graphics.DrawLine(blackPen, v3, v1);
                 Board.Refresh();
             }
 
@@ -113,20 +87,20 @@ namespace WindowsFormsApp1
 
         private void Board_MouseUp(object sender, MouseEventArgs e)
         {
-            var p = new Pen(Color.Blue, 2);
+            var p = new Pen(FigColor, thickness);
             h = e.X - x;
             w = e.Y - y;
             Rectangle shape = new Rectangle(x, y, h, w);
-            if (radioButton1.Checked)
+            if (Circle.Checked)
             {
-                Figure circle = new Circle(x, y, g, p, shape);
-                circle.Draw(g, p, shape);
+                Figure circle = new Circle(x, y, graphics, p, shape);
+                circle.Draw(graphics, p, shape);
                 Board.Refresh();
             }
-            else if (radioButton2.Checked)
+            else if (Rectangle.Checked)
             {
-                Figure rectangle = new RectangleC(x, y, g, p, shape);
-                rectangle.Draw(g, p, shape);
+                Figure rectangle = new RectangleC(x, y, graphics, p, shape);
+                rectangle.Draw(graphics, p, shape);
                 Board.Refresh();
             }
         }
@@ -149,12 +123,26 @@ namespace WindowsFormsApp1
             Board.Cursor = Cursors.Cross;
         }
 
+        private void thicknessBar_Scroll(object sender, EventArgs e)
+        {
+            thickness = thicknessBar.Value;
+        }
+
+        private void Color_Click(object sender, EventArgs e)
+        {
+            if (colorDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                ColorBut.BackColor = colorDialog.Color;
+                FigColor = colorDialog.Color;
+            }
+        }
+
         private void Board_Paint(object sender, PaintEventArgs e)
         {
             e.Graphics.DrawImage(draw, new Point(0, 0));
         }
 
-        private void radioButton1_MouseDown(object sender, MouseEventArgs e)
+        private void Circle_MouseDown(object sender, MouseEventArgs e)
         {
             x = e.X;
             y = e.Y;

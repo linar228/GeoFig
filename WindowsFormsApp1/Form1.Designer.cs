@@ -30,25 +30,30 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ColorBut = new System.Windows.Forms.Button();
+            this.thicknessBar = new System.Windows.Forms.TrackBar();
             this.Point3 = new System.Windows.Forms.Button();
             this.Point2 = new System.Windows.Forms.Button();
             this.Point1 = new System.Windows.Forms.Button();
-            this.Clear = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.ClearBut = new System.Windows.Forms.Button();
+            this.OpenBut = new System.Windows.Forms.Button();
+            this.SaveBut = new System.Windows.Forms.Button();
+            this.Rectangle = new System.Windows.Forms.RadioButton();
+            this.Circle = new System.Windows.Forms.RadioButton();
             this.Board = new System.Windows.Forms.Panel();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
+            this.ColorLab = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.thicknessBar)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(377, 15);
+            this.label1.Location = new System.Drawing.Point(213, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 1;
@@ -56,15 +61,18 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.ColorLab);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.ColorBut);
+            this.panel1.Controls.Add(this.thicknessBar);
             this.panel1.Controls.Add(this.Point3);
             this.panel1.Controls.Add(this.Point2);
             this.panel1.Controls.Add(this.Point1);
-            this.panel1.Controls.Add(this.Clear);
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.radioButton2);
-            this.panel1.Controls.Add(this.radioButton1);
+            this.panel1.Controls.Add(this.ClearBut);
+            this.panel1.Controls.Add(this.OpenBut);
+            this.panel1.Controls.Add(this.SaveBut);
+            this.panel1.Controls.Add(this.Rectangle);
+            this.panel1.Controls.Add(this.Circle);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -72,18 +80,35 @@
             this.panel1.Size = new System.Drawing.Size(800, 114);
             this.panel1.TabIndex = 14;
             // 
-            // label2
+            // label3
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(481, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 13);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Draw mouse line and triangle";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(385, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 13);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Thickness";
+            // 
+            // ColorBut
+            // 
+            this.ColorBut.Location = new System.Drawing.Point(486, 31);
+            this.ColorBut.Name = "ColorBut";
+            this.ColorBut.Size = new System.Drawing.Size(75, 23);
+            this.ColorBut.TabIndex = 24;
+            this.ColorBut.UseVisualStyleBackColor = true;
+            this.ColorBut.Click += new System.EventHandler(this.Color_Click);
+            // 
+            // thicknessBar
+            // 
+            this.thicknessBar.Location = new System.Drawing.Point(365, 31);
+            this.thicknessBar.Name = "thicknessBar";
+            this.thicknessBar.Size = new System.Drawing.Size(104, 45);
+            this.thicknessBar.TabIndex = 23;
+            this.thicknessBar.Scroll += new System.EventHandler(this.thicknessBar_Scroll);
             // 
             // Point3
             // 
-            this.Point3.Location = new System.Drawing.Point(510, 86);
+            this.Point3.Location = new System.Drawing.Point(259, 79);
             this.Point3.Name = "Point3";
             this.Point3.Size = new System.Drawing.Size(75, 23);
             this.Point3.TabIndex = 21;
@@ -93,7 +118,7 @@
             // 
             // Point2
             // 
-            this.Point2.Location = new System.Drawing.Point(510, 57);
+            this.Point2.Location = new System.Drawing.Point(259, 50);
             this.Point2.Name = "Point2";
             this.Point2.Size = new System.Drawing.Size(75, 23);
             this.Point2.TabIndex = 20;
@@ -103,7 +128,7 @@
             // 
             // Point1
             // 
-            this.Point1.Location = new System.Drawing.Point(510, 30);
+            this.Point1.Location = new System.Drawing.Point(259, 21);
             this.Point1.Name = "Point1";
             this.Point1.Size = new System.Drawing.Size(75, 23);
             this.Point1.TabIndex = 19;
@@ -111,59 +136,58 @@
             this.Point1.UseVisualStyleBackColor = true;
             this.Point1.Click += new System.EventHandler(this.Point1_Click);
             // 
-            // Clear
+            // ClearBut
             // 
-            this.Clear.Location = new System.Drawing.Point(176, 57);
-            this.Clear.Name = "Clear";
-            this.Clear.Size = new System.Drawing.Size(75, 23);
-            this.Clear.TabIndex = 18;
-            this.Clear.Text = "Clear";
-            this.Clear.UseVisualStyleBackColor = true;
-            this.Clear.Click += new System.EventHandler(this.Clear_Click);
+            this.ClearBut.Location = new System.Drawing.Point(378, 79);
+            this.ClearBut.Name = "ClearBut";
+            this.ClearBut.Size = new System.Drawing.Size(75, 23);
+            this.ClearBut.TabIndex = 18;
+            this.ClearBut.Text = "Clear";
+            this.ClearBut.UseVisualStyleBackColor = true;
+            this.ClearBut.Click += new System.EventHandler(this.Clear_Click);
             // 
-            // button7
+            // OpenBut
             // 
-            this.button7.Location = new System.Drawing.Point(394, 57);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 17;
-            this.button7.Text = "Open";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.OpenBut.Location = new System.Drawing.Point(486, 86);
+            this.OpenBut.Name = "OpenBut";
+            this.OpenBut.Size = new System.Drawing.Size(75, 23);
+            this.OpenBut.TabIndex = 17;
+            this.OpenBut.Text = "Open";
+            this.OpenBut.UseVisualStyleBackColor = true;
+            this.OpenBut.Click += new System.EventHandler(this.OpenBut_Click);
             // 
-            // button6
+            // SaveBut
             // 
-            this.button6.Location = new System.Drawing.Point(394, 31);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 16;
-            this.button6.Text = "Save";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.SaveBut.Location = new System.Drawing.Point(486, 57);
+            this.SaveBut.Name = "SaveBut";
+            this.SaveBut.Size = new System.Drawing.Size(75, 23);
+            this.SaveBut.TabIndex = 16;
+            this.SaveBut.Text = "Save";
+            this.SaveBut.UseVisualStyleBackColor = true;
+            this.SaveBut.Click += new System.EventHandler(this.SaveBut_Click);
             // 
-            // radioButton2
+            // Rectangle
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(213, 34);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(109, 17);
-            this.radioButton2.TabIndex = 15;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Mouse Rectangle";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.Rectangle.AutoSize = true;
+            this.Rectangle.Location = new System.Drawing.Point(149, 59);
+            this.Rectangle.Name = "Rectangle";
+            this.Rectangle.Size = new System.Drawing.Size(74, 17);
+            this.Rectangle.TabIndex = 15;
+            this.Rectangle.TabStop = true;
+            this.Rectangle.Text = "Rectangle";
+            this.Rectangle.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // Circle
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(116, 33);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(86, 17);
-            this.radioButton1.TabIndex = 14;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Mouse Circle";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            this.radioButton1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.radioButton1_MouseDown);
+            this.Circle.AutoSize = true;
+            this.Circle.Location = new System.Drawing.Point(162, 31);
+            this.Circle.Name = "Circle";
+            this.Circle.Size = new System.Drawing.Size(51, 17);
+            this.Circle.TabIndex = 14;
+            this.Circle.TabStop = true;
+            this.Circle.Text = "Circle";
+            this.Circle.UseVisualStyleBackColor = true;
+            this.Circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Circle_MouseDown);
             // 
             // Board
             // 
@@ -181,6 +205,15 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // ColorLab
+            // 
+            this.ColorLab.AutoSize = true;
+            this.ColorLab.Location = new System.Drawing.Point(505, 11);
+            this.ColorLab.Name = "ColorLab";
+            this.ColorLab.Size = new System.Drawing.Size(31, 13);
+            this.ColorLab.TabIndex = 26;
+            this.ColorLab.Text = "Color";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,9 +225,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
             this.Text = "Form1";
-            //this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.thicknessBar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -203,17 +236,21 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel Board;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.RadioButton Rectangle;
+        private System.Windows.Forms.RadioButton Circle;
+        private System.Windows.Forms.Button SaveBut;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button Clear;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button OpenBut;
+        private System.Windows.Forms.Button ClearBut;
         private System.Windows.Forms.Button Point3;
         private System.Windows.Forms.Button Point2;
         private System.Windows.Forms.Button Point1;
+        private System.Windows.Forms.TrackBar thicknessBar;
+        private System.Windows.Forms.Button ColorBut;
+        private System.Windows.Forms.ColorDialog colorDialog;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label ColorLab;
     }
 }
 

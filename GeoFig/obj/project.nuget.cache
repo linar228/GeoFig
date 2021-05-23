@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ay3cK6GVBZ0iijBFPf7s1naA0FpapWwI+TDpjFQ85D3RrCRtfk7z7tDiGj7Er0K/bs3tnanzGw849ljLJH3P6w==",
+  "dgSpecHash": "nnGnoYkG0IymMgU5v8ul8ttoQHe8nHUUOfNAbLh0BTuCBgRD3CbL2nRDMGUxY4xMQhhiSAsF/XU5ndmAbIf6wA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\User\\Source\\Repos\\GeoFig\\GeoFig\\GeoFig.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\User\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\Пользователь\\Desktop\\last2\\GeoFig\\GeoFig.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
