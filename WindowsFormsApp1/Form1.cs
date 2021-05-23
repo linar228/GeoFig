@@ -18,7 +18,7 @@ namespace WindowsFormsApp1
         protected Graphics graphics;
         protected int thickness;
         protected Color FigColor = Color.Black;
-        int x, y, h, w;
+        int x, y, height, width;
         Point v1;
         Point v2;
         Point v3;
@@ -50,8 +50,8 @@ namespace WindowsFormsApp1
 
         private void Clear_Click(object sender, EventArgs e)
         {
-            var g = Graphics.FromImage(draw);
-            g.Clear(Color.White);
+            var graphics = Graphics.FromImage(draw);
+            graphics.Clear(Color.White);
             Board.Refresh();
         }
 
@@ -87,20 +87,20 @@ namespace WindowsFormsApp1
 
         private void Board_MouseUp(object sender, MouseEventArgs e)
         {
-            var p = new Pen(FigColor, thickness);
-            h = e.X - x;
-            w = e.Y - y;
-            Rectangle shape = new Rectangle(x, y, h, w);
+            var pen = new Pen(FigColor, thickness);
+            height = e.X - x;
+            width = e.Y - y;
+            Rectangle shape = new Rectangle(x, y, height, width);
             if (Circle.Checked)
             {
-                Figure circle = new Circle(x, y, graphics, p, shape);
-                circle.Draw(graphics, p, shape);
+                Figure circle = new Circle(x, y, graphics, pen, shape);
+                circle.Draw(graphics, pen, shape);
                 Board.Refresh();
             }
             else if (Rectangle.Checked)
             {
-                Figure rectangle = new RectangleC(x, y, graphics, p, shape);
-                rectangle.Draw(graphics, p, shape);
+                Figure rectangle = new RectangleC(x, y, graphics, pen, shape);
+                rectangle.Draw(graphics, pen, shape);
                 Board.Refresh();
             }
         }

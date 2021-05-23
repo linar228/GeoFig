@@ -30,9 +30,9 @@ namespace WindowsFormsApp1
             
         }
 
-        public override void Draw(Graphics g, Pen p, Rectangle shape)
+        public override void Draw(Graphics graphics, Pen pen, Rectangle shape)
         {
-            g.DrawEllipse(p, shape);
+            graphics.DrawEllipse(pen, shape);
         }
     }
 
@@ -68,9 +68,9 @@ namespace WindowsFormsApp1
         {
 
         }
-        public override void Draw(Graphics g, Pen p, Rectangle shape)
+        public override void Draw(Graphics graphics, Pen pen, Rectangle rectangle)
         {
-            g.DrawRectangle(p, shape);
+            graphics.DrawRectangle(pen, rectangle);
         }
     }
 }
